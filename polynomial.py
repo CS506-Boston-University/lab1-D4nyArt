@@ -86,21 +86,16 @@ class Sub:
         self.p2 = p2
 
     def __repr__(self):
-        # TODO: Implement string representation for subtraction
-        # Should handle parentheses similar to Mul class
-        # Hint: Look at how Mul class handles parentheses
-        pass
+        if isinstance(self.p1, (Add, Sub)):
+            if isinstance(self.p2, (Add, Sub)):
+                return f"( {repr(self.p1)} ) - ( {repr(self.p2)} )"
+            return f"( {repr(self.p1)} ) - {repr(self.p2)}"
+        if isinstance(self.p2, (Add, Sub)):
+            return f"{repr(self.p1)} - ( {repr(self.p2)} )"
+        return f"{repr(self.p1)} - {repr(self.p2)}"
 
     def evaluate(self, x_value):
-        # TODO: Implement evaluation for subtraction
-        # Should return the difference of the two operands
-        pass
-
-    def simplify(self):
-        # TODO (Optional Exercise): Implement simplification
-        # Examples: X - 0 -> X, 5 - 3 -> 2
-        # Hint: Simplify operands first, then apply simplification rules
-        pass
+        return Int(self.p1.evaluate(x_value).i - self.p2.evaluate(x_value).i)
 
 
 class Div:
@@ -109,21 +104,16 @@ class Div:
         self.p2 = p2
 
     def __repr__(self):
-        # TODO: Implement string representation for division
-        # Should handle parentheses similar to Mul class
-        # Hint: Look at how Mul class handles parentheses
-        pass
+        if isinstance(self.p1, (Add, Sub)):
+            if isinstance(self.p2, (Add, Sub)):
+                return f"( {repr(self.p1)} ) / ( {repr(self.p2)} )"
+            return f"( {repr(self.p1)} ) / {repr(self.p2)}"
+        if isinstance(self.p2, (Add, Sub)):
+            return f"{repr(self.p1)} / ( {repr(self.p2)} )"
+        return f"{repr(self.p1)} / {repr(self.p2)}"
 
     def evaluate(self, x_value):
-        # TODO: Implement evaluation for division
-        # Should return the quotient of the two operands (use integer division //)
-        pass
-
-    def simplify(self):
-        # TODO (Optional Exercise): Implement simplification
-        # Examples: X / 1 -> X, 6 / 2 -> 3
-        # Hint: Simplify operands first, then apply simplification rules
-        pass
+        return Int(self.p1.evaluate(x_value).i // self.p2.evaluate(x_value).i)
 
 
 # Original polynomial example
