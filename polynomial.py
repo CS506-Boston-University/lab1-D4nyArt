@@ -1,17 +1,15 @@
+
 class X:
    def __init__(self):
        pass
 
-
    def __repr__(self):
        return "X"
-
 
    def evaluate(self, x_value):
        # TODO: Implement evaluation for variable X
        # Should return an Int object with the given x_value
        return Int(x_value)
-
 
    def simplify(self):
        # TODO (Optional Exercise): Implement simplification
